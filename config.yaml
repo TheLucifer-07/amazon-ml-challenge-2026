@@ -15,9 +15,9 @@ paths:
   schemas_dir: "artifacts/schemas"
   thresholds_dir: "artifacts/thresholds"
   reports_dir: "artifacts/reports"
-  outputs_dir: "outputs"
-  final_matching_file: "outputs/matching_results.tsv"
-  final_candidate_file: "outputs/candidate_pairs.tsv"
+  outputs_dir: "output"
+  final_matching_file: "output/matching_results.tsv"
+  final_candidate_file: "output/candidate_pairs.tsv"
 
 data:
   separator: "\t"
