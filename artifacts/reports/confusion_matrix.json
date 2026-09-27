@@ -1,0 +1,25 @@
+{
+  "confusion_matrix": {
+    "true_positives_tp": 2830,
+    "false_positives_fp": 37,
+    "false_negatives_fn": 279,
+    "true_negatives_tn": 46454,
+    "total_evaluated_pairs": 49600
+  },
+  "classification_measures": {
+    "macro_f05": 0.9433709932701783,
+    "precision": 0.9870945238925707,
+    "recall": 0.9102605339337407,
+    "specificity": 0.9992041470392119,
+    "false_positive_rate_fpr": 0.0007958529607881095,
+    "false_discovery_rate_fdr": 0.012905476107429368,
+    "false_negative_rate_fnr": 0.08973946606625925,
+    "negative_predictive_value_npv": 0.9940299146213596,
+    "accuracy": 0.9936290322580645
+  },
+  "singleton_measures": {
+    "singletons_total": 263,
+    "singletons_correct": 254,
+    "singletons_accuracy": 0.9657794676806084
+  }
+}
