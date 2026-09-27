@@ -1,4 +1,5 @@
 """Unit tests for text, name, address, and country normalization."""
+
 from src.preprocessing.address_normalizer import extract_numbers, normalize_address
 from src.preprocessing.country_normalizer import is_country_match, normalize_country
 from src.preprocessing.name_normalizer import extract_name_tokens, normalize_business_name, remove_legal_suffixes

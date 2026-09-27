@@ -1,4 +1,5 @@
 """Centralized logging utility for the Entity Resolution pipeline."""
+
 import logging
 import sys
 from pathlib import Path
@@ -12,8 +13,7 @@ def get_logger(name: str = "er_pipeline", log_file: str | None = None, level: in
 
     logger.setLevel(level)
     formatter = logging.Formatter(
-        "[%(asctime)s] [%(levelname)s] [%(name)s:%(funcName)s]: %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S"
+        "[%(asctime)s] [%(levelname)s] [%(name)s:%(funcName)s]: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
     )
 
     console_handler = logging.StreamHandler(sys.stdout)

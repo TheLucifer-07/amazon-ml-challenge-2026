@@ -1,10 +1,8 @@
 """Edit distance and string similarity feature extractors using RapidFuzz."""
+
 from rapidfuzz.distance import JaroWinkler, Levenshtein
 
-# pyrefly: ignore [missing-import]
 from src.preprocessing.address_normalizer import normalize_address
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.name_normalizer import normalize_business_name, remove_legal_suffixes
 
 

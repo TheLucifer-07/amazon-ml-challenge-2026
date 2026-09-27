@@ -1,4 +1,5 @@
 """Script 03: Run multi-pass blocking and candidate generation."""
+
 import argparse
 import json
 from pathlib import Path
@@ -20,7 +21,9 @@ logger = get_logger("03_generate_candidates")
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate candidate pairs via multi-pass blocking.")
     parser.add_argument("--config", default="config.yaml", help="Path to config.yaml")
-    parser.add_argument("--sample-size", type=int, default=10000, help="Number of S1 entities to evaluate (None for full)")
+    parser.add_argument(
+        "--sample-size", type=int, default=10000, help="Number of S1 entities to evaluate (None for full)"
+    )
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -55,7 +58,9 @@ def main() -> None:
             logger.info(f"Loading {s_name} from {pq_path}...")
             df = pd.read_parquet(pq_path)
         else:
-            df = load_tsv_records(raw_train_dir / f"train_{s_name}.tsv", nrows=args.sample_size * 5 if args.sample_size else None)
+            df = load_tsv_records(
+                raw_train_dir / f"train_{s_name}.tsv", nrows=args.sample_size * 5 if args.sample_size else None
+            )
         cand_dfs.append(df)
 
     candidates_df = pd.concat(cand_dfs, ignore_index=True)

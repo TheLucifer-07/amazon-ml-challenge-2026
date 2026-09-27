@@ -1,4 +1,5 @@
 """Unit tests for F0.5 optimization and threshold search."""
+
 from src.evaluation.metrics import compute_entity_f_beta
 from src.evaluation.threshold_optimizer import optimize_threshold
 

@@ -1,4 +1,5 @@
 """Script 02: Prepare and clean data, apply text/address/country normalizations."""
+
 import argparse
 import csv
 from pathlib import Path
@@ -6,36 +7,27 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-# pyrefly: ignore [missing-import]
 from src.preprocessing.address_normalizer import normalize_address
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.country_normalizer import normalize_country
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.name_normalizer import normalize_business_name, remove_legal_suffixes
-
-# pyrefly: ignore [missing-import]
 from src.utils.io import load_config
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
-
-# pyrefly: ignore [missing-import]
 from src.utils.timing import timer
 
 logger = get_logger("02_prepare_data")
 
-SCHEMA = pa.schema([
-    ("entity_id", pa.string()),
-    ("business_name", pa.string()),
-    ("normalized_name", pa.string()),
-    ("clean_name", pa.string()),
-    ("business_address", pa.string()),
-    ("normalized_address", pa.string()),
-    ("country", pa.string()),
-    ("normalized_country", pa.string()),
-])
+SCHEMA = pa.schema(
+    [
+        ("entity_id", pa.string()),
+        ("business_name", pa.string()),
+        ("normalized_name", pa.string()),
+        ("clean_name", pa.string()),
+        ("business_address", pa.string()),
+        ("normalized_address", pa.string()),
+        ("country", pa.string()),
+        ("normalized_country", pa.string()),
+    ]
+)
 
 
 def process_tsv_to_parquet(

@@ -1,4 +1,5 @@
 """Vectorized inverted index candidate generator for ultra-fast entity blocking."""
+
 from collections import defaultdict
 from collections.abc import Callable, Sequence
 from typing import Any

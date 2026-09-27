@@ -1,17 +1,13 @@
 """Script 08: Run error analysis on false merges (FP) and missed matches (FN)."""
+
 import argparse
 import json
 from pathlib import Path
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.evaluation.error_analysis import analyze_prediction_errors
-
-# pyrefly: ignore [missing-import]
 from src.utils.io import load_config
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("08_error_analysis")

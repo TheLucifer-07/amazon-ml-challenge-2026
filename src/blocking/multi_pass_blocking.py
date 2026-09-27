@@ -1,16 +1,10 @@
 """Vectorized multi-pass blocking orchestration and candidate pair generation."""
+
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.blocking.candidate_generator import InvertedIndexBlocker
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.country_normalizer import normalize_country
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.name_normalizer import normalize_business_name, remove_legal_suffixes
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("multi_pass_blocking")

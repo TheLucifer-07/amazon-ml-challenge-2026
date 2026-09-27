@@ -1,4 +1,5 @@
 """Validator for canonical candidate-pair datasets."""
+
 from typing import Any
 
 import pandas as pd

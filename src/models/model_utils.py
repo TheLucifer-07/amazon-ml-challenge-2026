@@ -1,4 +1,5 @@
 """Model initialization, entity-aware splitting, and hyperparameter utilities."""
+
 from typing import Any
 
 import lightgbm as lgb

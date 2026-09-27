@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("data_loader")
@@ -35,4 +34,3 @@ def load_tsv_records(file_path: str | Path, nrows: int | None = None) -> pd.Data
         on_bad_lines="skip",
     )
     return df
-

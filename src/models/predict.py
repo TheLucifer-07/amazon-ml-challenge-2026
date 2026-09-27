@@ -1,4 +1,5 @@
 """Model inference and probability prediction."""
+
 from pathlib import Path
 from typing import Any
 

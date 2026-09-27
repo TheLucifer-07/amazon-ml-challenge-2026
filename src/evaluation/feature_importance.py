@@ -1,4 +1,5 @@
 """Feature importance extraction and reporting."""
+
 from pathlib import Path
 from typing import Any
 
@@ -21,10 +22,16 @@ def extract_feature_importance(
         logger.warning("Model does not expose feature_importances_ attribute.")
         return pd.DataFrame()
 
-    df_imp = pd.DataFrame({
-        "feature": feature_names,
-        "importance": importances,
-    }).sort_values(by="importance", ascending=False).reset_index(drop=True)
+    df_imp = (
+        pd.DataFrame(
+            {
+                "feature": feature_names,
+                "importance": importances,
+            }
+        )
+        .sort_values(by="importance", ascending=False)
+        .reset_index(drop=True)
+    )
 
     if output_csv_path:
         path = Path(output_csv_path)

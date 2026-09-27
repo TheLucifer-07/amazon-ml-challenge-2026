@@ -1,4 +1,5 @@
 """Unit tests for submission generation and validation rules."""
+
 import tempfile
 from pathlib import Path
 
@@ -8,10 +9,12 @@ from src.inference.output_builder import save_candidate_pairs_tsv, save_submissi
 
 
 def test_save_submission_tsv():
-    df_results = pd.DataFrame([
-        {"source1_entity_id": "S1-001", "matched_entity_ids": "S2-005,S3-010"},
-        {"source1_entity_id": "S1-002", "matched_entity_ids": ""},
-    ])
+    df_results = pd.DataFrame(
+        [
+            {"source1_entity_id": "S1-001", "matched_entity_ids": "S2-005,S3-010"},
+            {"source1_entity_id": "S1-002", "matched_entity_ids": ""},
+        ]
+    )
     with tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv") as f:
         temp_path = f.name
 

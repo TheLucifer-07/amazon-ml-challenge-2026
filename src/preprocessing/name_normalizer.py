@@ -1,4 +1,5 @@
 """Business name normalization and legal suffix handling."""
+
 import re
 
 from src.preprocessing.text_normalizer import clean_and_compact, normalize_text_base

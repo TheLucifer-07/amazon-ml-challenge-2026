@@ -1,4 +1,5 @@
 """Script 07: Comprehensive model evaluation on validation set."""
+
 import argparse
 import json
 from pathlib import Path
@@ -70,7 +71,9 @@ def main() -> None:
     print(f"  Macro-averaged F0.5:      {metrics['macro_f05']:.4f}")
     print(f"  Precision:                 {metrics['overall_precision']:.4f}")
     print(f"  Recall:                    {metrics['overall_recall']:.4f}")
-    print(f"  Singleton Accuracy:        {metrics['singletons_accuracy']:.4f} ({metrics['singletons_correct']}/{metrics['singletons_total']})")
+    print(
+        f"  Singleton Accuracy:        {metrics['singletons_accuracy']:.4f} ({metrics['singletons_correct']}/{metrics['singletons_total']})"
+    )
     print(f"  Pair True Positives (TP):  {metrics['pair_tp']:,}")
     print(f"  Pair False Positives (FP): {metrics['pair_fp']:,}")
     print(f"  Pair False Negatives (FN): {metrics['pair_fn']:,}")

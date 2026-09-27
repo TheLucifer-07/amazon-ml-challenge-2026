@@ -1,14 +1,12 @@
 """Candidate generation evaluation: recall, volume, and reduction ratio."""
+
 from typing import Any
 
 import numpy as np
 import pandas as pd
 
 
-def evaluate_candidate_recall(
-    candidate_map: dict[str, set[str]],
-    ground_truth_df: pd.DataFrame
-) -> dict[str, Any]:
+def evaluate_candidate_recall(candidate_map: dict[str, set[str]], ground_truth_df: pd.DataFrame) -> dict[str, Any]:
     """Measure candidate retrieval recall against ground truth matches."""
     total_true_pairs = 0
     retrieved_true_pairs = 0
@@ -53,5 +51,5 @@ def evaluate_candidate_recall(
             "median": float(np.median(counts)),
             "p95": float(np.percentile(counts, 95)),
             "p99": float(np.percentile(counts, 99)),
-        }
+        },
     }

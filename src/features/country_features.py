@@ -1,5 +1,5 @@
 """Open-set country relationship features."""
-# pyrefly: ignore [missing-import]
+
 from src.preprocessing.country_normalizer import is_country_match, normalize_country
 
 

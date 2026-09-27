@@ -1,4 +1,5 @@
 """Centralized base text normalization utilities."""
+
 import re
 import unicodedata
 
@@ -16,7 +17,6 @@ def normalize_text_base(text: str | None) -> str:
     # Replace non-breaking spaces and tabs with standard space
     text = re.sub(r"[\s\xa0]+", " ", text)
     return text.strip()
-
 
 
 def remove_punctuation(text: str) -> str:

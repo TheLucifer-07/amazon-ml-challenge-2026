@@ -1,4 +1,5 @@
 """Generate all 7 production Jupyter Notebooks for interactive exploration."""
+
 from pathlib import Path
 
 import nbformat as nbf

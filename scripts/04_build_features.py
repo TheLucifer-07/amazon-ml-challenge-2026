@@ -1,4 +1,5 @@
 """Script 04: Compute pairwise similarity features for candidate pairs."""
+
 import argparse
 from pathlib import Path
 

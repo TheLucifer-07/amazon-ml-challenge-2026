@@ -122,20 +122,14 @@ def validate_id_list_file(path, expected_header, col_label, required, valid_ids,
             return None
         cols = [c.strip().lower() for c in header.rstrip("\n").split(DELIM)]
         if cols != expected_header:
-            errors.append(
-                f"{name}: unexpected header {cols}. "
-                f"Expected exactly {expected_header} (tab-separated)."
-            )
+            errors.append(f"{name}: unexpected header {cols}. Expected exactly {expected_header} (tab-separated).")
             return None
 
         for line_num, line in enumerate(f, start=2):
             s1, tab, rest = line.partition(DELIM)
             if not tab:
                 if s1.strip():
-                    errors.append(
-                        f"{name}: malformed row (no tab) at line {line_num}: "
-                        f"{line.rstrip()!r}"
-                    )
+                    errors.append(f"{name}: malformed row (no tab) at line {line_num}: {line.rstrip()!r}")
                 continue
 
             n_rows += 1
@@ -165,18 +159,15 @@ def validate_id_list_file(path, expected_header, col_label, required, valid_ids,
     findings = [
         (
             dup_rows,
-            "{name}: duplicate source1_entity_id row(s): {ex}. "
-            "Each S1 entity may appear on only one row.",
+            "{name}: duplicate source1_entity_id row(s): {ex}. Each S1 entity may appear on only one row.",
         ),
         (
             intra_dupes,
-            "{name}: repeated ID inside a {col} list for: {ex}. "
-            "No duplicate IDs are allowed within a list.",
+            "{name}: repeated ID inside a {col} list for: {ex}. No duplicate IDs are allowed within a list.",
         ),
         (
             self_matches,
-            "{name}: {col} contains Source-1 IDs (self-matches): {ex}. "
-            "Only S2-/S3- IDs are allowed.",
+            "{name}: {col} contains Source-1 IDs (self-matches): {ex}. Only S2-/S3- IDs are allowed.",
         ),
         (
             wrong_prefix,
@@ -184,8 +175,7 @@ def validate_id_list_file(path, expected_header, col_label, required, valid_ids,
         ),
         (
             unknown,
-            "{name}: {col} references IDs not in the test "
-            "Source-2/3 files: {ex}.",
+            "{name}: {col} references IDs not in the test Source-2/3 files: {ex}.",
         ),
         (
             required - seen,
@@ -235,9 +225,7 @@ def validate(matching_path, candidate_path, test_dir, check_ids=False):
             "your submission."
         )
 
-    matched = validate_id_list_file(
-        matching_path, MATCHING_HEADER, "matched_entity_ids", required, valid_ids, errors
-    )
+    matched = validate_id_list_file(matching_path, MATCHING_HEADER, "matched_entity_ids", required, valid_ids, errors)
 
     # candidate_pairs.tsv is optional: if it's absent we skip its checks with a
     # warning (it's still expected in your final submission zip). A missing
@@ -245,8 +233,12 @@ def validate(matching_path, candidate_path, test_dir, check_ids=False):
     candidate = None
     if candidate_path and os.path.isfile(candidate_path):
         candidate = validate_id_list_file(
-            candidate_path, CANDIDATE_HEADER, "candidate_entity_ids",
-            required, valid_ids, errors,
+            candidate_path,
+            CANDIDATE_HEADER,
+            "candidate_entity_ids",
+            required,
+            valid_ids,
+            errors,
         )
     elif candidate_path:
         warnings.append(
@@ -259,9 +251,7 @@ def validate(matching_path, candidate_path, test_dir, check_ids=False):
     # A matched ID absent from candidate_pairs.tsv usually means a pipeline bug,
     # so we warn but never fail on it.
     if matched is not None and candidate is not None:
-        offenders = {
-            s1 for s1, mids in matched.items() if mids - candidate.get(s1, set())
-        }
+        offenders = {s1 for s1, mids in matched.items() if mids - candidate.get(s1, set())}
         if offenders:
             warnings.append(
                 f"{len(offenders)} S1 entity(ies) have matched IDs not present in "
@@ -286,8 +276,7 @@ def main():
         "--candidate",
         "-c",
         default=None,
-        help="Path to candidate_pairs.tsv "
-        "(default: output/candidate_pairs.tsv if it exists).",
+        help="Path to candidate_pairs.tsv (default: output/candidate_pairs.tsv if it exists).",
     )
     parser.add_argument(
         "--test-dir",
@@ -313,9 +302,7 @@ def main():
     print("ML Challenge 2026 — submission validator")
     print(f"  test dir: {args.test_dir}")
     try:
-        errors, warnings = validate(
-            args.matching, candidate_path, args.test_dir, check_ids=args.check_ids
-        )
+        errors, warnings = validate(args.matching, candidate_path, args.test_dir, check_ids=args.check_ids)
     except UnicodeDecodeError:
         print()
         print("FAIL — 1 issue(s) to fix before submitting:")

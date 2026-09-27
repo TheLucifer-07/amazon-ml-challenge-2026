@@ -1,26 +1,16 @@
 """Script 05: Train Gradient Boosting (LightGBM/XGBoost) model on training candidate pairs."""
+
 import argparse
 import json
 from pathlib import Path
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.models.model_utils import entity_aware_train_val_split
-
-# pyrefly: ignore [missing-import]
 from src.models.predict import predict_match_probabilities
-
-# pyrefly: ignore [missing-import]
 from src.models.train import train_matching_model
-
-# pyrefly: ignore [missing-import]
 from src.utils.io import load_config
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
-
-# pyrefly: ignore [missing-import]
 from src.utils.timing import timer
 
 logger = get_logger("05_train_model")
@@ -54,7 +44,6 @@ def main() -> None:
     X_train = train_df[feature_cols]
     y_train = train_df["label"]
     X_val = val_df[feature_cols]
-
 
     model_type = cfg["model"].get("type", "lightgbm")
     model_params = {

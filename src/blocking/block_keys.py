@@ -1,11 +1,7 @@
 """Blocking key generator functions."""
-# pyrefly: ignore [missing-import]
+
 from src.preprocessing.address_normalizer import extract_numbers
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.country_normalizer import normalize_country
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.name_normalizer import extract_name_tokens, normalize_business_name, remove_legal_suffixes
 
 

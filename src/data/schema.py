@@ -1,10 +1,12 @@
 """Canonical internal schema definitions and type constraints."""
+
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class EntityRecord:
     """Canonical single entity record representation."""
+
     entity_id: str
     business_name: str
     business_address: str
@@ -15,6 +17,7 @@ class EntityRecord:
 @dataclass(frozen=True)
 class CandidatePair:
     """Canonical candidate pair representation between Source 1 and candidate."""
+
     source1_entity_id: str
     candidate_entity_id: str
     source1_business_name: str

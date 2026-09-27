@@ -1,8 +1,6 @@
 """Token-level overlap and Jaccard similarity features."""
-# pyrefly: ignore [missing-import]
-from src.preprocessing.address_normalizer import extract_address_tokens
 
-# pyrefly: ignore [missing-import]
+from src.preprocessing.address_normalizer import extract_address_tokens
 from src.preprocessing.name_normalizer import extract_name_tokens
 
 

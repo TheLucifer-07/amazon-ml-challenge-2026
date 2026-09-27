@@ -1,10 +1,10 @@
 """Output TSV file writer for submission and candidate sets."""
+
 from collections.abc import Sequence
 from pathlib import Path
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("output_builder")

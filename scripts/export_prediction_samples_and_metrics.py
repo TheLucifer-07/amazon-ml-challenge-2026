@@ -1,4 +1,5 @@
 """Generate rich human-readable sample predictions and confusion matrix reports."""
+
 import json
 from pathlib import Path
 
@@ -72,15 +73,15 @@ Evaluated on the held-out validation set ({total_evaluated_pairs:,} candidate pa
 
 | Measure | Formula | Value | Percentage | Challenge Context |
 |:---|:---|:---:|:---:|:---|
-| **Macro $F_{{0.5}}$** | $\\frac{{1.25 \\times P \\times R}}{{0.25 \\times P + R}}$ | **{metrics['macro_f05']:.4f}** | **{metrics['macro_f05']*100:.2f}%** | **Primary Competition Metric** |
-| **Precision (PPV)** | $\\frac{{\\text{{TP}}}}{{\\text{{TP}} + \\text{{FP}}}}$ | **{metrics['overall_precision']:.4f}** | **{metrics['overall_precision']*100:.2f}%** | 2× heavier penalty on False Merges |
-| **Recall (Sensitivity)** | $\\frac{{\\text{{TP}}}}{{\\text{{TP}} + \\text{{FN}}}}$ | **{metrics['overall_recall']:.4f}** | **{metrics['overall_recall']*100:.2f}%** | Captures 91% of all positive match links |
-| **Specificity (TNR)** | $\\frac{{\\text{{TN}}}}{{\\text{{TN}} + \\text{{FP}}}}$ | **{tn / (tn + fp):.4f}** | **{(tn / (tn + fp))*100:.2f}%** | Near-zero false alarms among negative candidates |
-| **Singleton Accuracy** | $\\frac{{\\text{{Correct Singletons}}}}{{\\text{{Total Singletons}}}}$ | **{metrics['singletons_accuracy']:.4f}** | **{metrics['singletons_accuracy']*100:.2f}%** | **254 / 263** true singletons correctly predicted as `""` |
-| **Pairwise Accuracy** | $\\frac{{\\text{{TP}} + \\text{{TN}}}}{{\\text{{Total}}}}$ | **{(tp + tn) / total_evaluated_pairs:.4f}** | **{((tp + tn) / total_evaluated_pairs)*100:.2f}%** | Overall pairwise decision accuracy |
-| **False Positive Rate (FPR)** | $\\frac{{\\text{{FP}}}}{{\\text{{FP}} + \\text{{TN}}}}$ | **{fp / (fp + tn):.6f}** | **{(fp / (fp + tn))*100:.3f}%** | Rate of incorrect link proposals |
-| **False Discovery Rate (FDR)** | $\\frac{{\\text{{FP}}}}{{\\text{{TP}} + \\text{{FP}}}}$ | **{fp / (tp + fp):.4f}** | **{(fp / (tp + fp))*100:.2f}%** | Only 1.29% of predicted matches are false alarms |
-| **False Negative Rate (FNR)** | $\\frac{{\\text{{FN}}}}{{\\text{{FN}} + \\text{{TP}}}}$ | **{fn / (fn + tp):.4f}** | **{(fn / (fn + tp))*100:.2f}%** | Missed matches rate |
+| **Macro $F_{{0.5}}$** | $\\frac{{1.25 \\times P \\times R}}{{0.25 \\times P + R}}$ | **{metrics["macro_f05"]:.4f}** | **{metrics["macro_f05"] * 100:.2f}%** | **Primary Competition Metric** |
+| **Precision (PPV)** | $\\frac{{\\text{{TP}}}}{{\\text{{TP}} + \\text{{FP}}}}$ | **{metrics["overall_precision"]:.4f}** | **{metrics["overall_precision"] * 100:.2f}%** | 2× heavier penalty on False Merges |
+| **Recall (Sensitivity)** | $\\frac{{\\text{{TP}}}}{{\\text{{TP}} + \\text{{FN}}}}$ | **{metrics["overall_recall"]:.4f}** | **{metrics["overall_recall"] * 100:.2f}%** | Captures 91% of all positive match links |
+| **Specificity (TNR)** | $\\frac{{\\text{{TN}}}}{{\\text{{TN}} + \\text{{FP}}}}$ | **{tn / (tn + fp):.4f}** | **{(tn / (tn + fp)) * 100:.2f}%** | Near-zero false alarms among negative candidates |
+| **Singleton Accuracy** | $\\frac{{\\text{{Correct Singletons}}}}{{\\text{{Total Singletons}}}}$ | **{metrics["singletons_accuracy"]:.4f}** | **{metrics["singletons_accuracy"] * 100:.2f}%** | **254 / 263** true singletons correctly predicted as `""` |
+| **Pairwise Accuracy** | $\\frac{{\\text{{TP}} + \\text{{TN}}}}{{\\text{{Total}}}}$ | **{(tp + tn) / total_evaluated_pairs:.4f}** | **{((tp + tn) / total_evaluated_pairs) * 100:.2f}%** | Overall pairwise decision accuracy |
+| **False Positive Rate (FPR)** | $\\frac{{\\text{{FP}}}}{{\\text{{FP}} + \\text{{TN}}}}$ | **{fp / (fp + tn):.6f}** | **{(fp / (fp + tn)) * 100:.3f}%** | Rate of incorrect link proposals |
+| **False Discovery Rate (FDR)** | $\\frac{{\\text{{FP}}}}{{\\text{{TP}} + \\text{{FP}}}}$ | **{fp / (tp + fp):.4f}** | **{(fp / (tp + fp)) * 100:.2f}%** | Only 1.29% of predicted matches are false alarms |
+| **False Negative Rate (FNR)** | $\\frac{{\\text{{FN}}}}{{\\text{{FN}} + \\text{{TP}}}}$ | **{fn / (fn + tp):.4f}** | **{(fn / (fn + tp)) * 100:.2f}%** | Missed matches rate |
 
 ---
 
@@ -173,7 +174,7 @@ Singletons are strictly formatted with an empty string `""` in accordance with t
     for row in export_df[export_df["match_count"] == 0].head(10).itertuples(index=False):
         bname = str(row.business_name)[:30]
         baddr = str(row.business_address)[:35]
-        md_content += f"| `{row.source1_entity_id}` | {bname} | {baddr} | `{row.country}` | `\"\"` (Empty) | *{row.match_category}* |\n"
+        md_content += f'| `{row.source1_entity_id}` | {bname} | {baddr} | `{row.country}` | `""` (Empty) | *{row.match_category}* |\n'
 
     with open(sample_md_path, "w", encoding="utf-8") as f:
         f.write(md_content)

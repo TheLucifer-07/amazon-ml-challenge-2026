@@ -1,4 +1,5 @@
 """Business address normalization without external geocoding lookup."""
+
 import re
 
 from src.preprocessing.text_normalizer import clean_and_compact, normalize_text_base

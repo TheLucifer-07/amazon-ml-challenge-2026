@@ -1,38 +1,20 @@
 """Script 09: Predict matches on test set and output matching_results.tsv and candidate_pairs.tsv."""
+
 import argparse
 import json
 from pathlib import Path
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.blocking.multi_pass_blocking import MultiPassBlocker
-
-# pyrefly: ignore [missing-import]
 from src.data.loader import load_tsv_records
-
-# pyrefly: ignore [missing-import]
 from src.features.feature_pipeline import build_feature_matrix
-
-# pyrefly: ignore [missing-import]
 from src.inference.aggregator import aggregate_predictions
-
-# pyrefly: ignore [missing-import]
 from src.inference.output_builder import save_candidate_pairs_tsv, save_submission_tsv
-
-# pyrefly: ignore [missing-import]
 from src.models.predict import load_matching_model, predict_match_probabilities
-
-# pyrefly: ignore [missing-import]
 from src.pairs.pair_builder import build_candidate_pairs_df
-
-# pyrefly: ignore [missing-import]
 from src.utils.io import load_config
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
-
-# pyrefly: ignore [missing-import]
 from src.utils.timing import timer
 
 logger = get_logger("09_predict")

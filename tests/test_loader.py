@@ -1,4 +1,5 @@
 """Unit tests for data loader and schema."""
+
 import tempfile
 from pathlib import Path
 

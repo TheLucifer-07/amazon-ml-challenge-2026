@@ -1,6 +1,5 @@
 """Unit tests for blocking and indexing."""
 
-
 from src.blocking.block_keys import (
     get_address_number_keys,
     get_clean_name_key,

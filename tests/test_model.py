@@ -1,4 +1,5 @@
 """Unit tests for ML models (LightGBM/XGBoost)."""
+
 import numpy as np
 import pandas as pd
 
@@ -8,12 +9,14 @@ from src.models.train import train_matching_model
 
 
 def test_entity_aware_split_no_leakage():
-    df = pd.DataFrame([
-        {"source1_entity_id": "S1-A", "candidate_entity_id": "S2-1", "label": 1},
-        {"source1_entity_id": "S1-A", "candidate_entity_id": "S2-2", "label": 0},
-        {"source1_entity_id": "S1-B", "candidate_entity_id": "S2-3", "label": 1},
-        {"source1_entity_id": "S1-C", "candidate_entity_id": "S2-4", "label": 0},
-    ])
+    df = pd.DataFrame(
+        [
+            {"source1_entity_id": "S1-A", "candidate_entity_id": "S2-1", "label": 1},
+            {"source1_entity_id": "S1-A", "candidate_entity_id": "S2-2", "label": 0},
+            {"source1_entity_id": "S1-B", "candidate_entity_id": "S2-3", "label": 1},
+            {"source1_entity_id": "S1-C", "candidate_entity_id": "S2-4", "label": 0},
+        ]
+    )
     train_df, val_df = entity_aware_train_val_split(df, val_size=0.33, random_state=42)
     s1_train = set(train_df["source1_entity_id"])
     s1_val = set(val_df["source1_entity_id"])

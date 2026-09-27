@@ -1,4 +1,5 @@
 """Official competition evaluation metric: Macro-averaged F0.5 score per Source 1 entity."""
+
 from typing import Any
 
 

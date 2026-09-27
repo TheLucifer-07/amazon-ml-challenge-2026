@@ -1,4 +1,5 @@
 """Decision threshold optimizer for Macro-averaged F0.5."""
+
 from typing import Any
 
 import numpy as np
@@ -42,7 +43,9 @@ def optimize_threshold(
 
         res = compute_macro_f05(ground_truth_map, preds_map)
         score = res["macro_f05"]
-        history.append({"threshold": t, "macro_f05": score, "precision": res["overall_precision"], "recall": res["overall_recall"]})
+        history.append(
+            {"threshold": t, "macro_f05": score, "precision": res["overall_precision"], "recall": res["overall_recall"]}
+        )
 
         if score > best_score:
             best_score = score

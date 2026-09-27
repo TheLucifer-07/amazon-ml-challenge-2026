@@ -1,21 +1,15 @@
 """Script 01: Inspect challenge datasets, check schemas, missing values, and report statistics."""
+
 import argparse
 import json
 from collections import Counter
 from pathlib import Path
 
-# pyrefly: ignore [missing-import]
 from src.utils.io import load_config
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
-
-# pyrefly: ignore [missing-import]
 from src.utils.timing import timer
 
 logger = get_logger("01_inspect_data")
-
-
 
 
 def inspect_source_tsv(file_path: Path, is_ground_truth: bool = False) -> tuple[dict, Counter, set[str]]:
@@ -106,11 +100,7 @@ def inspect_source_tsv(file_path: Path, is_ground_truth: bool = False) -> tuple[
     unique_ids = len(id_counts)
     duplicate_ids = sum(1 for cnt in id_counts.values() if cnt > 1)
 
-    missing_percentages = (
-        {k: round(v / row_count * 100, 2) for k, v in missing_counts.items()}
-        if row_count
-        else {}
-    )
+    missing_percentages = {k: round(v / row_count * 100, 2) for k, v in missing_counts.items()} if row_count else {}
 
     result = {
         "file_name": file_path.name,

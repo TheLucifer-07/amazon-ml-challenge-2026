@@ -1,4 +1,5 @@
 """Validation functions for schema, duplicate records, nulls, and entity IDs."""
+
 from typing import Any
 
 import pandas as pd

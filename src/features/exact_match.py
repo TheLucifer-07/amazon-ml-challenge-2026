@@ -1,11 +1,7 @@
 """Exact match feature extractors for entity resolution."""
-# pyrefly: ignore [missing-import]
+
 from src.preprocessing.address_normalizer import normalize_address
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.country_normalizer import is_country_match
-
-# pyrefly: ignore [missing-import]
 from src.preprocessing.name_normalizer import normalize_business_name, remove_legal_suffixes
 
 

@@ -1,4 +1,5 @@
 """Script 10: Validate submission files against competition format rules."""
+
 import argparse
 import subprocess
 import sys
@@ -20,9 +21,12 @@ def main():
     cmd = [
         sys.executable,
         str(validator_script),
-        "--matching", args.matching,
-        "--candidate", args.candidate,
-        "--test-dir", args.test_dir
+        "--matching",
+        args.matching,
+        "--candidate",
+        args.candidate,
+        "--test-dir",
+        args.test_dir,
     ]
     print(f"[10_validate_submission] Running validator: {' '.join(cmd)}")
     result = subprocess.run(cmd)

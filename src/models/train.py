@@ -1,4 +1,5 @@
 """Model training pipeline for entity matching."""
+
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +25,7 @@ def train_matching_model(
 
     pos_count = int(np.sum(y_train == 1))
     neg_count = int(np.sum(y_train == 0))
-    logger.info(f"Class distribution: Positive={pos_count:,} ({pos_count/len(y_train):.2%}), Negative={neg_count:,}")
+    logger.info(f"Class distribution: Positive={pos_count:,} ({pos_count / len(y_train):.2%}), Negative={neg_count:,}")
 
     model = create_classifier(model_type=model_type, params=params)
     model.fit(X_train, y_train)

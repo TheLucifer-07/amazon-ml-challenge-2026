@@ -1,7 +1,7 @@
 """Address-specific features: postal codes, building numbers, digit patterns."""
+
 import re
 
-# pyrefly: ignore [missing-import]
 from src.preprocessing.address_normalizer import extract_numbers
 
 

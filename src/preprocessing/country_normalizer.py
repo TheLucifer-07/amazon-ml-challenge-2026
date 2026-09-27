@@ -1,4 +1,5 @@
 """Open-set country normalization and matching."""
+
 import re
 
 from src.preprocessing.text_normalizer import normalize_text_base

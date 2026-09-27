@@ -1,7 +1,7 @@
 """Build canonical candidate pairs from Source 1 and candidate datasets."""
+
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("pair_builder")

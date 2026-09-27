@@ -1,10 +1,10 @@
 """Entity prediction aggregator for final submission formatting."""
+
 from collections import defaultdict
 from collections.abc import Sequence
 
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("aggregator")
@@ -67,7 +67,7 @@ def aggregate_predictions(
 
     df_out = pd.DataFrame(rows)
     logger.info(
-        f"Aggregated {len(df_out):,} rows: {singletons:,} singletons ({singletons/len(df_out):.2%}), "
+        f"Aggregated {len(df_out):,} rows: {singletons:,} singletons ({singletons / len(df_out):.2%}), "
         f"{total_matches:,} total match links accepted."
     )
     return df_out

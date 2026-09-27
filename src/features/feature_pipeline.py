@@ -1,4 +1,5 @@
 """Pairwise feature engineering pipeline."""
+
 import json
 from pathlib import Path
 from typing import Any
@@ -6,25 +7,12 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-# pyrefly: ignore [missing-import]
 from src.features.address_features import compute_address_features
-
-# pyrefly: ignore [missing-import]
 from src.features.country_features import compute_country_features
-
-# pyrefly: ignore [missing-import]
 from src.features.exact_match import compute_exact_features
-
-# pyrefly: ignore [missing-import]
 from src.features.missing_features import compute_missing_features
-
-# pyrefly: ignore [missing-import]
 from src.features.string_similarity import compute_string_similarity_features
-
-# pyrefly: ignore [missing-import]
 from src.features.token_similarity import compute_token_features
-
-# pyrefly: ignore [missing-import]
 from src.utils.logger import get_logger
 
 logger = get_logger("feature_pipeline")
