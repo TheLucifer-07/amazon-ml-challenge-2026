@@ -8,8 +8,8 @@ from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(description="Validate submission files.")
-    parser.add_argument("--matching", default="outputs/matching_results.tsv", help="Matching results file")
-    parser.add_argument("--candidate", default="outputs/candidate_pairs.tsv", help="Candidate pairs file")
+    parser.add_argument("--matching", default="output/matching_results.tsv", help="Matching results file")
+    parser.add_argument("--candidate", default="output/candidate_pairs.tsv", help="Candidate pairs file")
     parser.add_argument("--test-dir", default="dataset/test", help="Directory containing test_source*.tsv")
     args = parser.parse_args()
 

@@ -7,7 +7,7 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 INTERIM_DIR = PROJECT_ROOT / "data" / "interim"
-OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+OUTPUTS_DIR = PROJECT_ROOT / "output" if (PROJECT_ROOT / "output").exists() else PROJECT_ROOT / "outputs"
 REPORTS_DIR = PROJECT_ROOT / "artifacts" / "reports"
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
