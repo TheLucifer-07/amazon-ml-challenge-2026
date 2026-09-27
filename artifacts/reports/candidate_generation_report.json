@@ -1,0 +1,15 @@
+{
+  "total_true_pairs": 34752,
+  "retrieved_true_pairs": 15712,
+  "candidate_pair_recall": 0.4521178637200737,
+  "entity_full_recall": 0.13951271186440678,
+  "total_s1_entities": 10000,
+  "candidate_volume": {
+    "min": 0,
+    "max": 620,
+    "mean": 24.8136,
+    "median": 3.0,
+    "p95": 121.04999999999927,
+    "p99": 247.02000000000044
+  }
+}

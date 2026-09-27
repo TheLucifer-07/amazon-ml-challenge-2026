@@ -1,0 +1,40 @@
+# Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data directories (large files immutable or generated)
+data/raw/
+data/interim/
+data/processed/
+data/candidates/
+dataset/
+
+# Artifact binaries
+artifacts/models/
+artifacts/preprocessors/
+
+# Outputs
+outputs/
+output/
+
+# Environment files
+.env
+.env.local

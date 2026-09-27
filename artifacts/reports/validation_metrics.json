@@ -1,0 +1,13 @@
+{
+  "macro_f05": 0.9433709932701783,
+  "total_entities": 1778,
+  "singletons_total": 263,
+  "singletons_correct": 254,
+  "singletons_accuracy": 0.9657794676806084,
+  "entities_with_matches": 1515,
+  "pair_tp": 2830,
+  "pair_fp": 37,
+  "pair_fn": 279,
+  "overall_precision": 0.9870945238925707,
+  "overall_recall": 0.9102605339337407
+}
